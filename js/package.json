@@ -1,0 +1,18 @@
+{
+  "name": "Books",
+  "version": "1.0.0",
+  "description": "Social Network of Books",
+  "repository": "electron_apps",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.6.7"
+  },
+  "dependencies": {
+    "amazon-book-search-se": "0.0.9",
+    "google-books-search": "^0.3.1"
+  }
+}

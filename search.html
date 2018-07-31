@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        text-align: center;
+      }
+    </style>
+
+    <title>Book Finder</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/photon.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+  </head>
+  <body>
+    <div class="window">
+      <!-- Your app's content goes inside .window-content -->
+      <input type="button" class="btn btn-large backbutton" id="backBtn" value="Go Back">
+      <div class="window-content">
+        <div class="pane-group">
+
+          <!-- Searched book -->
+          <div class="container" id="book"></div>
+          <!-- end searched book -->
+
+        </div>
+        <!-- end panel group -->
+
+      </div>
+    </div>
+
+    <script src="js/search.js"></script>
+    
+  </body>
+</html>
