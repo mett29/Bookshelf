@@ -30,12 +30,29 @@ ipcRenderer.on('info', (event, title) => {
                 $.each(item.authors, function (i, author) {
                     htmlString += '<p class="bg-info"><i>' + author + '</i></p>';
                 });
-                htmlString += '<p class="small">' + item.description + '</p>';
-                htmlString += '<strong class="small">Average Rating: ' + item.averageRating + '</strong><br>';
-                htmlString += '<strong class="small">Number of pages: ' + item.pageCount + '</strong><br>';
-                htmlString += '<input type="button" class="btn btn-small btn-primary" id="readThisBook" onclick="readThisBook(\'' + item.thumbnail + '\')" value="I read this book">'
+                if (item.averageRating != undefined) {
+                    htmlString += '<p class="small">' + item.description + '</p>';
+                }
+                if (item.averageRating != undefined) {
+                    htmlString += '<strong class="small">Average Rating: ' + item.averageRating + '</strong><br>';
+                    let rating = '';
+                    for (let i = 0; i < item.averageRating - 1; i++) {
+                        rating += '<i class="fa fa-star"></i>';
+                    }
+                    if (!isInt(item.averageRating)) {
+                        rating += '<i class="fa fa-star-half"></i>';
+                    } else {
+                        rating += '<i class="fa fa-star"></i>';
+                    }
+                    htmlString += '<div class="text-warning">' +
+                                        rating + '\
+                                    </div>';
+                }
+                htmlString += '<strong class="small">Number of pages: </strong><br>';
+                htmlString += '<i class="fa fa-book"></i>  ' + item.pageCount + '<br><br>';
+                htmlString += '<input type="button" class="btn btn-small btn-primary" id="readThisBook" onclick="readThisBook(\'' + item.thumbnail + '\')" value="I read this book">';
                 htmlString += '</div></div></section>';
-                htmlString += '<hr>'
+                htmlString += '<hr>';
             });
 
             $('#book').html(htmlString + "</div>");
@@ -53,4 +70,8 @@ $('#backBtn').on('click', () => {
 function readThisBook(thumbnail) {
     ipcRenderer.send('readThis', thumbnail);
 }
+
+function isInt(n) {
+    return n % 1 === 0;
+ }
 

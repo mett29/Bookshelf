@@ -7,6 +7,7 @@ var store = new Store();
 
 var books = require('google-books-search');
 
+printContainer(Object.keys(store.store).length);
 loadThumbnails();
 
 ipcRenderer.on('readThis', (event, thumbnail) => {
@@ -20,8 +21,18 @@ ipcRenderer.on('readThis', (event, thumbnail) => {
     }
     store.clear();
     store.set(thumbnails);
+    printContainer(thumbnails.length);
     loadThumbnails();
 });
+
+function printContainer(n) {
+    let htmlString = "";
+    for (let i = 0; i < n; i++) {
+        console.log(i);
+        htmlString += '<div class="div_copertina"><img class="resize_vertical" id="div"' + i + 1 + '></div>';
+    }
+    $('#thumbs').html(htmlString + "");
+}
 
 function loadThumbnails() {
     // Load thumbnails of read books
@@ -45,4 +56,9 @@ function searchBook(title) {
 $('#searchBtn').on('click', () => {
     let title = $('#item').val();
     searchBook(title);
+})
+
+$('.div_copertina').on('hover', () => {
+    // Show details about that book
+
 })
