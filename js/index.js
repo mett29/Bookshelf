@@ -28,7 +28,6 @@ ipcRenderer.on('readThis', (event, thumbnail) => {
 function printContainer(n) {
     let htmlString = "";
     for (let i = 0; i < n; i++) {
-        console.log(i);
         htmlString += '<div class="div_copertina"><img class="resize_vertical" id="div"' + i + 1 + '></div>';
     }
     $('#thumbs').html(htmlString + "");
@@ -60,5 +59,5 @@ $('#searchBtn').on('click', () => {
 
 $('.div_copertina').on('hover', () => {
     // Show details about that book
-
+    // TODO
 })
